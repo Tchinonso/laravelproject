@@ -10,12 +10,13 @@ class ProductController extends Controller
     {
         $products = Product::all();
 
-        return view('products.index', compact('products'));
+        // return view('pages.index', compact('products'));
+        return view('pages.index')-> with ('products', $products);
     }
 
     public function create()
     {
-        return view('products.create');
+        return view('pages.create');
     }
 
     public function store(Request $request)
@@ -36,14 +37,14 @@ class ProductController extends Controller
     {
         $product = Product::find($id);
 
-        return view('products.show', compact('product'));
+        return view('pages.show', compact('product'));
     }
 
     public function edit($id)
     {
         $product = Product::find($id);
 
-        return view('products.edit', compact('product'));
+        return view('pages.edit', compact('product'));
     }
 
     public function update(Request $request, $id)
